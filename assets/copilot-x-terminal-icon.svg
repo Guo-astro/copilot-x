@@ -1,0 +1,49 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Modern gradient -->
+    <linearGradient id="terminalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0891B2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Shadow effect -->
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect x="8" y="8" width="112" height="112" rx="20" ry="20" fill="url(#terminalGradient)" filter="url(#shadow)"/>
+
+  <!-- Inner frame -->
+  <rect x="16" y="16" width="96" height="96" rx="12" ry="12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- Terminal prompt elements -->
+  <g transform="translate(32,48)">
+    <!-- Prompt chevron -->
+    <path d="M 0 0 L 8 6 L 0 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+    <!-- Cursor/command line -->
+    <rect x="16" y="4" width="24" height="4" rx="2" fill="white" opacity="0.7"/>
+
+    <!-- Additional command lines for context -->
+    <rect x="16" y="12" width="32" height="2" rx="1" fill="white" opacity="0.4"/>
+    <rect x="16" y="16" width="20" height="2" rx="1" fill="white" opacity="0.4"/>
+  </g>
+
+  <!-- AI/automation symbol - gear/cog -->
+  <g transform="translate(80,80)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="white" stroke-width="2" opacity="0.8"/>
+    <circle cx="0" cy="0" r="6" fill="white" opacity="0.6"/>
+    <!-- Gear teeth -->
+    <rect x="-1" y="-14" width="2" height="4" fill="white" opacity="0.8"/>
+    <rect x="-1" y="10" width="2" height="4" fill="white" opacity="0.8"/>
+    <rect x="-14" y="-1" width="4" height="2" fill="white" opacity="0.8"/>
+    <rect x="10" y="-1" width="4" height="2" fill="white" opacity="0.8"/>
+  </g>
+
+  <!-- Modern tech accent lines -->
+  <line x1="24" y1="88" x2="56" y2="88" stroke="white" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <line x1="24" y1="96" x2="48" y2="96" stroke="white" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+</svg>
