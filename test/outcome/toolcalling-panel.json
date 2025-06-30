@@ -1,0 +1,14 @@
+[
+	{
+		"name": "toolCalling [panel] - find all phone numbers in markdown files in the codebase",
+		"requests": [
+			"0a3e0682792fdb3543968daba8d3e31633a3498beda68f885d645203448bea81"
+		]
+	},
+	{
+		"name": "toolCalling [panel] - I'm using git, create a new branch called issue-9876",
+		"requests": [
+			"c2856ef312f58e9a83a2509548789f23f26adce3b5b44595ce34b88e8d579b26"
+		]
+	}
+]
