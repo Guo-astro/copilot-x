@@ -1534,7 +1534,7 @@
 			{
 				"id": "github.copilot.workspace",
 				"name": "workspace",
-				"fullName": "Workspace",
+				"fullName": "Copilot X",
 				"description": "%copilot.workspace.description%",
 				"sampleRequest": "%copilot.workspace.sampleRequest%",
 				"locations": [
@@ -1800,6 +1800,11 @@
 			}
 		],
 		"commands": [
+			{
+				"command": "github.copilot.signIn",
+				"title": "Sign In",
+				"category": "GitHub Copilot"
+			},
 			{
 				"command": "github.copilot.chat.explain",
 				"title": "%github.copilot.command.explainThis%",

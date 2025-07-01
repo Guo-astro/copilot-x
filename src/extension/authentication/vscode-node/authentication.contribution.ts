@@ -2,6 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import { commands } from 'vscode';
 import { IAuthenticationService } from '../../../platform/authentication/common/authentication';
 import { IAuthenticationChatUpgradeService } from '../../../platform/authentication/common/authenticationUpgrade';
 import { IVSCodeExtensionContext } from '../../../platform/extContext/common/extensionContext';
@@ -14,10 +15,29 @@ import { IInstantiationService } from '../../../util/vs/platform/instantiation/c
  * The main entry point for the authentication contribution.
  */
 export class AuthenticationContrib extends Disposable {
-	constructor(@IInstantiationService private readonly instantiationService: IInstantiationService) {
+	constructor(
+		@IInstantiationService private readonly instantiationService: IInstantiationService,
+		@IAuthenticationService private readonly authenticationService: IAuthenticationService,
+		@ILogService private readonly logService: ILogService
+	) {
 		super();
+		this.registerCommands();
 		this.askToUpgradeAuthPermissions();
 	}
+
+	private registerCommands() {
+		// Register the missing github.copilot.signIn command
+		this._register(commands.registerCommand('github.copilot.signIn', async () => {
+			try {
+				// Try to get a GitHub session, creating one if needed
+				await this.authenticationService.getAnyGitHubSession({ createIfNone: true });
+			} catch (error) {
+				// Log the error but don't show error messages since auth failures are handled elsewhere
+				this.logService.logger.warn(`Failed to sign in to GitHub: ${error}`);
+			}
+		}));
+	}
+
 	private async askToUpgradeAuthPermissions() {
 		const authUpgradeAsk = this._register(this.instantiationService.createInstance(AuthUpgradeAsk));
 		await authUpgradeAsk.run();
