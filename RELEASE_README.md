@@ -32,10 +32,32 @@
 
 ### Prerequisites
 
-1. **Node.js** (≥18.0.0)
+1. **Node.js** (≥22.0.0) - Required by the project engines
 2. **npm** or **yarn**
 3. **VS Code** (≥1.102.0)
 4. **vsce** (VS Code Extension Manager)
+
+#### For Nix Users
+
+If you're using Nix, you can set up the development environment using the provided `flake.nix`:
+
+```bash
+# Enter the Nix development shell
+nix develop
+
+# Or use direnv (if you have it set up)
+direnv allow
+```
+
+Alternatively, install Node.js 22+ through your system package manager or nix-env:
+
+```bash
+# Using nix-env
+nix-env -iA nixpkgs.nodejs_22
+
+# Or using nix shell for temporary use
+nix shell nixpkgs#nodejs_22
+```
 
 ### Installation
 
@@ -124,6 +146,23 @@ vsce publish patch  # 1.0.0 → 1.0.1
 vsce publish minor  # 1.0.0 → 1.1.0
 vsce publish major  # 1.0.0 → 2.0.0
 ```
+
+### ⚠️ **Handling Proposed APIs Issue**
+
+If you encounter this error during publishing:
+
+```
+Extensions using unallowed proposed API (enabledApiProposals: [...]) can't be published to the Marketplace
+```
+
+This happens because this extension uses VS Code's proposed APIs that aren't allowed in the marketplace. The fix has been applied by removing the `enabledApiProposals` field from package.json. The `_enabledApiProposals_DEV_ONLY` field remains for development.
+
+**Important**: This means some features that depend on proposed APIs may not work in the published version. You have two options:
+
+1. **Private Distribution**: Package as `.vsix` and distribute privately (see Step 5)
+2. **Fork Strategy**: Create a simplified version without proposed APIs for marketplace
+
+If you still get the error, ensure your package.json doesn't contain `enabledApiProposals` field.
 
 ### Step 5: Verify Publication
 
