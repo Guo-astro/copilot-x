@@ -2100,6 +2100,20 @@
 				"enablement": "github.copilot.byokEnabled"
 			},
 			{
+				"command": "github.copilot.startTask",
+				"title": "%github.copilot.command.startTask%",
+				"icon": "$(play)",
+				"category": "GitHub Copilot",
+				"enablement": "!github.copilot.interactiveSession.disabled"
+			},
+			{
+				"command": "github.copilot.startTask.quickPick",
+				"title": "%github.copilot.command.startTask.quickPick%",
+				"icon": "$(list-selection)",
+				"category": "GitHub Copilot",
+				"enablement": "!github.copilot.interactiveSession.disabled"
+			},
+			{
 				"command": "github.copilot.chat.debug.showElements",
 				"title": "Show Rendered Elements"
 			},

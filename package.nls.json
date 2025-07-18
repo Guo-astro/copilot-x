@@ -283,5 +283,7 @@
 	"copilot.toolSet.runNotebook.description": "Run notebook cells",
 	"copilot.toolSet.search.description": "Search and read files in your workspace",
 	"copilot.toolSet.new.description": "Scaffold a new workspace in VS Code",
-	"copilot.toolSet.runTasks.description": "Run tasks in your workspace"
+	"copilot.toolSet.runTasks.description": "Run tasks in your workspace",
+	"github.copilot.command.startTask": "Start Task",
+	"github.copilot.command.startTask.quickPick": "Start Task (Quick Pick)"
 }

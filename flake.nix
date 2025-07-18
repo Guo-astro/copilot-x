@@ -10,24 +10,24 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        
+
         # Create a derivation for the development environment
         copilot-x-dev = pkgs.stdenv.mkDerivation {
           pname = "copilot-x-dev";
           version = "0.29.2";
-          
+
           src = ./.;
-          
+
           buildInputs = with pkgs; [
             nodejs_22
             npm-check-updates
             git
           ];
-          
+
           buildPhase = ''
             echo "Development environment ready"
           '';
-          
+
           installPhase = ''
             mkdir -p $out/bin
             echo "#!/bin/sh" > $out/bin/copilot-x-dev
@@ -39,7 +39,7 @@
       {
         # Provide both packages and devShells
         packages.default = copilot-x-dev;
-        
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             # Node.js 22.x as required by package.json
@@ -56,6 +56,9 @@
           ];
 
           shellHook = ''
+           if [ -f ~/.zshrc ]; then
+              source ~/.zshrc
+           fi
             # Disable nvm to avoid conflicts
             unset NVM_DIR
             unset NVM_BIN
@@ -66,6 +69,31 @@
             # Ensure Nix-provided Node.js is first in PATH
             export PATH="${pkgs.nodejs_22}/bin:$PWD/node_modules/.bin:$PATH"
 
+            # Source user's shell configuration
+            # Try different approaches to get aliases and functions
+            if [ -f ~/.zshrc ]; then
+              # Method 1: Use zsh to extract aliases and export them to bash-compatible format
+              zsh -c 'source ~/.zshrc 2>/dev/null; alias' | sed 's/=/ /' | while read name def; do
+                if [ -n "$name" ] && [ -n "$def" ]; then
+                  alias "$name=$def" 2>/dev/null || true
+                fi
+              done
+
+              # Method 2: Extract common patterns directly
+              grep -E '^[[:space:]]*alias[[:space:]]' ~/.zshrc 2>/dev/null | while IFS= read -r line; do
+                eval "$line" 2>/dev/null || true
+              done
+
+              # Method 3: Extract exports
+              grep -E '^[[:space:]]*export[[:space:]]' ~/.zshrc 2>/dev/null | while IFS= read -r line; do
+                eval "$line" 2>/dev/null || true
+              done
+            fi
+
+            # Also try to source common alias files
+            [ -f ~/.aliases ] && source ~/.aliases 2>/dev/null || true
+            [ -f ~/.bash_aliases ] && source ~/.bash_aliases 2>/dev/null || true
+
             echo "🚀 VS Code Copilot Chat Development Environment"
             echo "Node.js version: $(node --version)"
             echo "npm version: $(npm --version)"
@@ -75,6 +103,9 @@
             echo "  npm install     - Install dependencies"
             echo "  npm run compile - Build the extension"
             echo "  npm run watch   - Build and watch for changes"
+            echo ""
+            echo "📝 Shell configuration loaded (aliases, exports, etc.)"
+            echo "💡 Tip: Use 'alias' to see available aliases"
             echo ""
           '';
 
