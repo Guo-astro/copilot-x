@@ -15,6 +15,7 @@ export class ProjectSpecContribution extends Disposable {
 	) {
 		super();
 		this.registerWebviewProvider();
+		this.registerCommands();
 	}
 
 	private registerWebviewProvider(): void {
@@ -22,6 +23,16 @@ export class ProjectSpecContribution extends Disposable {
 		const provider = this.instantiationService.createInstance(ProjectSpecWebviewProvider, vscode.extensions.getExtension('github.copilot-chat')?.extensionUri || vscode.Uri.file(''));
 		this._register(
 			vscode.window.registerWebviewViewProvider(ProjectSpecWebviewProvider.viewType, provider)
+		);
+	}
+
+	private registerCommands(): void {
+		// Register command to show project specification webview
+		this._register(
+			vscode.commands.registerCommand('github.copilot.projectSpec.show', () => {
+				vscode.commands.executeCommand('workbench.view.explorer');
+				vscode.commands.executeCommand('github.copilot.projectSpec.focus');
+			})
 		);
 	}
 }

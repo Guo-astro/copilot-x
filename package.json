@@ -2171,6 +2171,12 @@
 				"title": "Disable Follow Cell Execution from Chat",
 				"shortTitle": "Unfollow",
 				"icon": "$(pinned-dirty)"
+			},
+			{
+				"command": "github.copilot.projectSpec.show",
+				"title": "Show Project Specification",
+				"category": "GitHub Copilot",
+				"icon": "$(project)"
 			}
 		],
 		"configuration": [
@@ -3457,6 +3463,15 @@
 					"name": "Copilot Chat Debug",
 					"icon": "assets/debug-icon.svg",
 					"when": "github.copilot.chat.showLogView"
+				}
+			],
+			"explorer": [
+				{
+					"id": "github.copilot.projectSpec",
+					"name": "Project Specification",
+					"type": "webview",
+					"icon": "$(project)",
+					"when": "github.copilot.activated"
 				}
 			]
 		},
