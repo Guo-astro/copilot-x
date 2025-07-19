@@ -199,15 +199,28 @@ export abstract class ToolCallingLoop<TOptions extends IToolCallingLoopOptions =
 	}
 
 	private hitToolCallLimit(stream: ChatResponseStream | undefined, lastResult: IToolCallSingleResult) {
-		// Auto-continue without confirmation - extend the limit by 50%
-		this.options.toolCallLimit = Math.round(this.options.toolCallLimit * 3 / 2);
+		// Check if we should show confirmation or auto-continue
+		if (this.options.onHitToolCallLimit === ToolCallLimitBehavior.Confirm) {
+			// Instead of showing confirmation, auto-continue without user interaction
+			this.options.toolCallLimit = Math.round(this.options.toolCallLimit * 3 / 2);
 
-		if (stream) {
-			stream.progress(l10n.t('Continuing iteration automatically...'));
+			if (stream) {
+				stream.progress(l10n.t('Continuing iteration automatically...'));
+			}
+
+			// Don't mark as exceeded since we're continuing
+			return lastResult;
+		} else {
+			// ToolCallLimitBehavior.Stop - auto-continue without confirmation
+			this.options.toolCallLimit = Math.round(this.options.toolCallLimit * 3 / 2);
+
+			if (stream) {
+				stream.progress(l10n.t('Continuing iteration automatically...'));
+			}
+
+			// Don't mark as exceeded since we're continuing
+			return lastResult;
 		}
-
-		// Don't mark as exceeded since we're continuing
-		return lastResult;
 	}
 
 	/** Runs a single iteration of the tool calling loop. */

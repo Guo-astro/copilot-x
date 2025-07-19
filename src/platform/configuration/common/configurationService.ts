@@ -747,8 +747,33 @@ export namespace ConfigKey {
 	export const NewWorkspaceCreationAgentEnabled = defineSetting<boolean>('chat.newWorkspaceCreation.enabled', true);
 	export const SummarizeAgentConversationHistory = defineExpSetting<boolean>('chat.summarizeAgentConversationHistory.enabled', true);
 	export const CurrentEditorAgentContext = defineSetting<boolean>('chat.agent.currentEditorContext.enabled', true);
-	export const TerminalAllowList = defineSetting<string[]>('chat.agent.terminal.allowList', ["echo", "Write-Host", "ls", "Get-ChildItem", "cat", "Get-Content", "pwd", "Get-Location", "cd", "Set-Location"]);
-	export const TerminalDenyList = defineSetting<string[]>('chat.agent.terminal.denyList', ["rm", "rmdir", "del", "Remove-Item", "kill", "curl", "wget", "eval", "chmod", "chown"]);
+	export const TerminalAllowList = defineSetting<string[]>('chat.agent.terminal.allowList', [
+		// Basic shell commands
+		"echo", "Write-Host", "ls", "Get-ChildItem", "cat", "Get-Content", "pwd", "Get-Location", "cd", "Set-Location",
+		// Process control commands
+		"fg", "bg", "jobs", "nohup",
+		// Network and download commands
+		"curl", "wget", "ping", "telnet", "nc", "nslookup", "dig",
+		// Read/monitoring commands
+		"ps", "ps aux", "grep", "head", "tail", "less", "more", "find", "which", "where", "whoami", "id", "uname", "date", "uptime",
+		"df", "du", "free", "top", "htop", "lsof", "netstat", "ss", "lsblk", "mount", "env", "printenv", "history",
+		"wc", "sort", "uniq", "cut", "awk", "sed", "tr", "xargs", "tee", "diff", "cmp", "file", "stat", "tree",
+		// Git commands
+		"git status", "git log", "git diff", "git show", "git branch", "git remote", "git config", "git clone", "git pull", "git push", "git add", "git commit",
+		// Test commands
+		"npm test", "yarn test", "pnpm test", "flutter test", "dart test", "cargo test", "go test", "pytest", "python -m pytest",
+		// Build commands
+		"npm run", "yarn run", "pnpm run", "flutter build", "cargo build", "go build", "dotnet build",
+		// Package manager commands
+		"npm install", "yarn install", "pnpm install", "flutter pub get", "cargo fetch", "go mod tidy",
+		// Development commands
+		"npm start", "yarn start", "flutter run", "cargo run", "go run",
+		// Analysis commands
+		"npm run lint", "flutter analyze", "cargo clippy", "go vet", "eslint", "tslint",
+		// Additional utility commands
+		"timeout", "sleep", "wait", "mkdir", "touch", "ln", "cp", "mv"
+	]);
+	export const TerminalDenyList = defineSetting<string[]>('chat.agent.terminal.denyList', ["rm", "rmdir", "del", "Remove-Item", "kill", "killall", "pkill", "eval", "chmod", "chown", "sudo", "su"]);
 	/** BYOK  */
 	export const OllamaEndpoint = defineSetting<string>('chat.byok.ollamaEndpoint', 'http://localhost:11434');
 	export const EditsCodeNewNotebookAgentEnabled = defineExpSetting<boolean>('chat.edits.newNotebook.enabled', true);

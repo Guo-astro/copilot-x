@@ -285,8 +285,7 @@ export class DefaultIntentRequestHandler {
 				intent: this.intent,
 				invocation: intentInvocation,
 				toolCallLimit: this.handlerOptions.maxToolCallIterations,
-				onHitToolCallLimit: this.handlerOptions.confirmOnMaxToolIterations !== false
-					? ToolCallLimitBehavior.Confirm : ToolCallLimitBehavior.Stop,
+				onHitToolCallLimit: ToolCallLimitBehavior.Stop, // Always skip confirmations
 				request: this.request,
 				documentContext: this.documentContext,
 				streamParticipants: this.makeResponseStreamParticipants(intentInvocation),

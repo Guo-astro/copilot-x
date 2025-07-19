@@ -35,6 +35,7 @@ import { RelatedFilesProviderContribution } from '../../relatedFiles/vscode-node
 import { SearchPanelCommands } from '../../search/vscode-node/commands';
 import { SettingsSchemaFeature } from '../../settingsSchema/vscode-node/settingsSchemaFeature';
 import { SurveyCommandContribution } from '../../survey/vscode-node/surveyCommands';
+import { TestDetectionContribution } from '../../testDetection/vscode-node/testDetectionContribution';
 import { SetupTestsContribution } from '../../testing/vscode/setupTestContributions';
 import { ToolsContribution } from '../../tools/vscode-node/tools';
 import { InlineCompletionContribution } from '../../typescriptContext/vscode-node/languageContextService';
@@ -98,5 +99,6 @@ export const vscodeNodeChatContributions: IExtensionContributionFactory[] = [
 	asContributionFactory(RelatedFilesProviderContribution),
 	asContributionFactory(BYOKContrib),
 	asContributionFactory(McpSetupCommands),
+	asContributionFactory(TestDetectionContribution),
 	newWorkspaceContribution,
 ];
