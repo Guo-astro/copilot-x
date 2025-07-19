@@ -30,7 +30,8 @@ export default defineConfig({
 	version: isRecoveryBuild ? 'stable' : 'insiders-unreleased',
 	launchArgs: [
 		'--disable-extensions',
-		'--profile-temp'
+		'--profile-temp',
+		'--enable-proposed-api=goastro.copilot-x'
 	],
 	mocha: {
 		ui: 'tdd',
