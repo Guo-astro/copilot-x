@@ -168,7 +168,7 @@ export class ProjectSpecWebviewProvider extends Disposable implements vscode.Web
 			padding: 6px 12px;
 			background: var(--vscode-button-background);
 			color: var(--vscode-button-foreground);
-			border: none;
+			border: 1px solid var(--vscode-button-border, var(--vscode-contrastBorder));
 			border-radius: 2px;
 			cursor: pointer;
 			font-size: 12px;
@@ -181,6 +181,7 @@ export class ProjectSpecWebviewProvider extends Disposable implements vscode.Web
 		.btn-secondary {
 			background: var(--vscode-button-secondaryBackground);
 			color: var(--vscode-button-secondaryForeground);
+			border: 1px solid var(--vscode-button-border, var(--vscode-contrastBorder));
 		}
 
 		.btn-secondary:hover {

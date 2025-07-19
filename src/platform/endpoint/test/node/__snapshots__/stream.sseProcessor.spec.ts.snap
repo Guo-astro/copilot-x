@@ -475,7 +475,7 @@ exports[`SSEProcessor > real world snapshots > single tool call > finishedCallba
 			"text": "",
 			"copilotToolCalls": [
 				{
-					"name": "copilot_searchCodebase",
+					"name": "copilotx_searchCodebase",
 					"arguments": "{\\"query\\":\\"linkedlist\\"}",
 					"id": "call_ZQkSp6hzLvcGcH2L2CmaBkXM"
 				}

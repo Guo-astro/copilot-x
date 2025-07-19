@@ -91,6 +91,7 @@
 	],
 	"main": "./dist/extension",
 	"l10n": "./l10n",
+
 	"_enabledApiProposals_DEV_ONLY": [
 		"extensionsAny",
 		"newSymbolNamesProvider",
@@ -138,7 +139,7 @@
 	"contributes": {
 		"languageModelTools": [
 			{
-				"name": "copilot_searchCodebase",
+				"name": "searchCodebase",
 				"toolReferenceName": "codebase",
 				"displayName": "%copilot.tools.searchCodebase.name%",
 				"icon": "$(folder)",
@@ -147,7 +148,7 @@
 				"modelDescription": "Run a natural language search for relevant code or documentation comments from the user's current workspace. Returns relevant code snippets from the user's current workspace if it is large, or the full contents of the workspace if it is small.",
 				"tags": [
 					"codesearch",
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -163,14 +164,14 @@
 				}
 			},
 			{
-				"name": "copilot_searchWorkspaceSymbols",
+				"name": "copilotx_searchWorkspaceSymbols",
 				"toolReferenceName": "symbols",
 				"displayName": "%copilot.tools.searchWorkspaceSymbols.name%",
 				"icon": "$(symbol)",
 				"userDescription": "%copilot.workspaceSymbols.tool.description%",
 				"modelDescription": "Search the user's workspace for code symbols using language services. Use this tool when the user is looking for a specific symbol in their workspace.",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -186,7 +187,7 @@
 				}
 			},
 			{
-				"name": "copilot_listCodeUsages",
+				"name": "copilotx_listCodeUsages",
 				"toolReferenceName": "usages",
 				"displayName": "%copilot.tools.listCodeUsages.name%",
 				"icon": "$(references)",
@@ -194,7 +195,7 @@
 				"userDescription": "%copilot.listCodeUsages.tool.description%",
 				"modelDescription": "Request to list all usages (references, definitions, implementations etc) of a function, class, method, variable etc. Use this tool when \n1. Looking for a sample implementation of an interface or class\n2. Checking how a function is used throughout the codebase.\n3. Including and updating all usages when changing a function, method, or constructor",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -217,7 +218,7 @@
 				}
 			},
 			{
-				"name": "copilot_getVSCodeAPI",
+				"name": "copilotx_getVSCodeAPI",
 				"toolReferenceName": "vscodeAPI",
 				"displayName": "%copilot.tools.getVSCodeAPI.name%",
 				"icon": "$(references)",
@@ -240,7 +241,7 @@
 			},
 			{
 				"displayName": "%copilot.tools.think.name%",
-				"name": "copilot_think",
+				"name": "copilotx_think",
 				"tags": [],
 				"when": "config.github.copilot.chat.agent.thinkingTool",
 				"modelDescription": "Use this tool to think deeply about the user's request and organize your thoughts. This tool helps improve response quality by allowing the model to consider the request carefully, brainstorm solutions, and plan complex tasks. It's particularly useful for:\n\n1. Exploring repository issues and brainstorming bug fixes\n2. Analyzing test results and planning fixes\n3. Planning complex refactoring approaches\n4. Designing new features and architecture\n5. Organizing debugging hypotheses\n\nThe tool logs your thought process for transparency but doesn't execute any code or make changes.",
@@ -258,12 +259,12 @@
 				}
 			},
 			{
-				"name": "copilot_findFiles",
+				"name": "copilotx_findFiles",
 				"toolReferenceName": "fileSearch",
 				"displayName": "%copilot.tools.findFiles.name%",
 				"modelDescription": "Search for files in the workspace by glob pattern. This only returns the paths of matching files. Use this tool when you know the exact filename pattern of the files you're searching for. Glob patterns match from the root of the workspace folder. Examples:\n- **/*.{js,ts} to match all js/ts files in the workspace.\n- src/** to match all files under the top-level src folder.\n- **/foo/**/*.js to match all js files under any foo folder in the workspace.",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -283,12 +284,12 @@
 				}
 			},
 			{
-				"name": "copilot_findTextInFiles",
+				"name": "copilotx_findTextInFiles",
 				"toolReferenceName": "textSearch",
 				"displayName": "%copilot.tools.findTextInFiles.name%",
 				"modelDescription": "Do a fast text search in the workspace. Use this tool when you want to search with an exact string or regex. If you are not sure what words will appear in the workspace, prefer using regex patterns with alternation (|) or character classes to search for multiple potential words at once instead of making separate searches. For example, use 'function|method|procedure' to look for all of those words at once. Use includePattern to search within files matching a specific pattern, or in a specific file, using a relative path. Use this tool when you want to see an overview of a particular file, instead of using read_file many times to look for code within a file.",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -317,7 +318,7 @@
 				}
 			},
 			{
-				"name": "copilot_applyPatch",
+				"name": "copilotx_applyPatch",
 				"displayName": "%copilot.tools.applyPatch.name%",
 				"toolReferenceName": "applyPatch",
 				"userDescription": "%copilot.tools.applyPatch.description%",
@@ -341,12 +342,12 @@
 				}
 			},
 			{
-				"name": "copilot_readFile",
+				"name": "readFile",
 				"toolReferenceName": "readFile",
 				"displayName": "%copilot.tools.readFile.name%",
 				"modelDescription": "Read the contents of a file.\n\nYou must specify the line range you're interested in. Line numbers are 1-indexed. If the file contents returned are insufficient for your task, you may call this tool again to retrieve more content. Prefer reading larger ranges over doing many small reads.",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -372,12 +373,12 @@
 				}
 			},
 			{
-				"name": "copilot_listDirectory",
+				"name": "copilotx_listDirectory",
 				"toolReferenceName": "listDirectory",
 				"displayName": "%copilot.tools.listDirectory.name%",
 				"modelDescription": "List the contents of a directory. Result will have the name of the child. If the name ends in /, it's a folder, otherwise a file",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -393,7 +394,7 @@
 				}
 			},
 			{
-				"name": "copilot_runInTerminal",
+				"name": "copilotx_runInTerminal",
 				"toolReferenceName": "runInTerminal",
 				"displayName": "%copilot.tools.runInTerminal.name%",
 				"modelDescription": "This tool allows you to execute shell commands in a persistent terminal session, preserving environment variables, working directory, and other context across multiple commands.\n\nCommand Execution:\n- Supports multi-line commands \n\nDirectory Management:\n- Must use absolute paths to avoid navigation issues.\n\nProgram Execution:\n- Supports Python, Node.js, and other executables.\n- Install dependencies via pip, npm, etc.\n\nBackground Processes:\n- For long-running tasks (e.g., servers), set isBackground=true.\n- Returns a terminal ID for checking status and runtime later.\n\nOutput Management:\n- Output is automatically truncated if longer than 60KB to prevent context overflow\n- Use filters like 'head', 'tail', 'grep' to limit output size\n- For pager commands, disable paging: use 'git --no-pager' or add '| cat'\n\nBest Practices:\n- Be specific with commands to avoid excessive output\n- Use targeted queries instead of broad scans\n- Consider using 'wc -l' to count before listing many items",
@@ -411,7 +412,7 @@
 						},
 						"isBackground": {
 							"type": "boolean",
-							"description": "Whether the command starts a background process. If true, the command will run in the background and you will not see the output. If false, the tool call will block on the command finishing, and then you will get the output. Examples of background processes: building in watch mode, starting a server. You can check the output of a background process later on by using copilot_getTerminalOutput."
+							"description": "Whether the command starts a background process. If true, the command will run in the background and you will not see the output. If false, the tool call will block on the command finishing, and then you will get the output. Examples of background processes: building in watch mode, starting a server. You can check the output of a background process later on by using copilotx_getTerminalOutput."
 						}
 					},
 					"required": [
@@ -422,10 +423,10 @@
 				}
 			},
 			{
-				"name": "copilot_getTerminalOutput",
+				"name": "copilotx_getTerminalOutput",
 				"toolReferenceName": "getTerminalOutput",
 				"displayName": "%copilot.tools.getTerminalOutput.name%",
-				"modelDescription": "Get the output of a terminal command previous started with copilot_runInTerminal",
+				"modelDescription": "Get the output of a terminal command previous started with copilotx_runInTerminal",
 				"tags": [],
 				"inputSchema": {
 					"type": "object",
@@ -441,7 +442,7 @@
 				}
 			},
 			{
-				"name": "copilot_getErrors",
+				"name": "copilotx_getErrors",
 				"displayName": "%copilot.tools.getErrors.name%",
 				"toolReferenceName": "problems",
 				"canBeReferencedInPrompt": true,
@@ -467,21 +468,21 @@
 				}
 			},
 			{
-				"name": "copilot_readProjectStructure",
+				"name": "copilotx_readProjectStructure",
 				"displayName": "%copilot.tools.readProjectStructure.name%",
 				"modelDescription": "Get a file tree representation of the workspace.",
 				"tags": []
 			},
 			{
-				"name": "copilot_getChangedFiles",
+				"name": "copilotx_getChangedFiles",
 				"displayName": "%copilot.tools.getChangedFiles.name%",
 				"toolReferenceName": "changes",
 				"icon": "$(diff)",
 				"canBeReferencedInPrompt": true,
 				"userDescription": "%copilot.tools.changes.description%",
-				"modelDescription": "Get git diffs of current file changes in a git repository. Don't forget that you can use copilot_runInTerminal to run git commands in a terminal as well.",
+				"modelDescription": "Get git diffs of current file changes in a git repository. Don't forget that you can use copilotx_runInTerminal to run git commands in a terminal as well.",
 				"tags": [
-					"vscode_codesearch"
+					"copilotx_codesearch"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -506,7 +507,7 @@
 				}
 			},
 			{
-				"name": "copilot_testFailure",
+				"name": "copilotx_testFailure",
 				"toolReferenceName": "testFailure",
 				"displayName": "%copilot.tools.testFailure.name%",
 				"icon": "$(beaker)",
@@ -514,17 +515,17 @@
 				"modelDescription": "Includes test failure information in the prompt.",
 				"inputSchema": {},
 				"tags": [
-					"vscode_editing_with_tests",
-					"enable_other_tool_copilot_readFile",
-					"enable_other_tool_copilot_listDirectory",
-					"enable_other_tool_copilot_findFiles",
-					"enable_other_tool_copilot_runTests"
+					"copilotx_editing_with_tests",
+					"enable_other_tool_copilotx_readFile",
+					"enable_other_tool_copilotx_listDirectory",
+					"enable_other_tool_copilotx_findFiles",
+					"enable_other_tool_copilotx_runTests"
 				],
 				"when": "config.chat.agent.enabled",
 				"canBeReferencedInPrompt": true
 			},
 			{
-				"name": "copilot_updateUserPreferences",
+				"name": "copilotx_updateUserPreferences",
 				"toolReferenceName": "updateUserPreferences",
 				"displayName": "%copilot.tools.updateUserPreferences.name%",
 				"modelDescription": "Update the user's preferences file with new information about the user and their coding preferences, based on the current chat history.",
@@ -548,7 +549,7 @@
 				"when": "config.github.copilot.chat.enableUserPreferences"
 			},
 			{
-				"name": "copilot_runTests",
+				"name": "copilotx_runTests",
 				"toolReferenceName": "runTests",
 				"canBeReferencedInPrompt": true,
 				"displayName": "%copilot.tools.runTests.name%",
@@ -566,16 +567,16 @@
 					}
 				},
 				"tags": [
-					"vscode_editing_with_tests",
-					"enable_other_tool_copilot_readFile",
-					"enable_other_tool_copilot_listDirectory",
-					"enable_other_tool_copilot_findFiles",
-					"enable_other_tool_copilot_runTests"
+					"copilotx_editing_with_tests",
+					"enable_other_tool_copilotx_readFile",
+					"enable_other_tool_copilotx_listDirectory",
+					"enable_other_tool_copilotx_findFiles",
+					"enable_other_tool_copilotx_runTests"
 				],
 				"when": "config.chat.agent.enabled"
 			},
 			{
-				"name": "copilot_getTerminalSelection",
+				"name": "copilotx_getTerminalSelection",
 				"toolReferenceName": "terminalSelection",
 				"displayName": "%github.copilot.tools.terminalSelection.name%",
 				"modelDescription": "Get the user's current selection in the active terminal.",
@@ -584,7 +585,7 @@
 				"icon": "$(terminal)"
 			},
 			{
-				"name": "copilot_getTerminalLastCommand",
+				"name": "copilotx_getTerminalLastCommand",
 				"toolReferenceName": "terminalLastCommand",
 				"displayName": "%github.copilot.tools.terminalLastCommand.name%",
 				"modelDescription": "Get the user's current selection in the active terminal.",
@@ -593,7 +594,7 @@
 				"icon": "$(terminal)"
 			},
 			{
-				"name": "copilot_createNewWorkspace",
+				"name": "copilotx_createNewWorkspace",
 				"displayName": "%github.copilot.tools.createNewWorkspace.name%",
 				"toolReferenceName": "newWorkspace",
 				"icon": "$(new-folder)",
@@ -618,7 +619,7 @@
 				]
 			},
 			{
-				"name": "copilot_createAndRunTask",
+				"name": "copilotx_createAndRunTask",
 				"displayName": "%github.copilot.tools.createAndRunTask.name%",
 				"toolReferenceName": "createAndRunTask",
 				"canBeReferencedInPrompt": false,
@@ -688,11 +689,11 @@
 					]
 				},
 				"tags": [
-					"enable_other_tool_copilot_getProjectSetupInfo"
+					"enable_other_tool_copilotx_getProjectSetupInfo"
 				]
 			},
 			{
-				"name": "copilot_getProjectSetupInfo",
+				"name": "copilotx_getProjectSetupInfo",
 				"displayName": "%github.copilot.tools.getProjectSetupInfo.name%",
 				"when": "config.github.copilot.chat.newWorkspaceCreation.enabled",
 				"toolReferenceName": "getProjectSetupInfo",
@@ -716,7 +717,7 @@
 				"tags": []
 			},
 			{
-				"name": "copilot_installExtension",
+				"name": "copilotx_installExtension",
 				"displayName": "Install Extension in VS Code",
 				"when": "config.github.copilot.chat.newWorkspaceCreation.enabled",
 				"toolReferenceName": "installExtension",
@@ -741,7 +742,7 @@
 				"tags": []
 			},
 			{
-				"name": "copilot_runVscodeCommand",
+				"name": "copilotx_runVscodeCommand",
 				"displayName": "Run VS Code Command",
 				"when": "config.github.copilot.chat.newWorkspaceCreation.enabled",
 				"toolReferenceName": "runVscodeCommand",
@@ -773,7 +774,7 @@
 				"tags": []
 			},
 			{
-				"name": "copilot_createNewJupyterNotebook",
+				"name": "copilotx_createNewJupyterNotebook",
 				"displayName": "Create New Jupyter Notebook",
 				"icon": "$(notebook)",
 				"toolReferenceName": "newJupyterNotebook",
@@ -794,7 +795,7 @@
 				"tags": []
 			},
 			{
-				"name": "copilot_runVsCodeTask",
+				"name": "copilotx_runVsCodeTask",
 				"displayName": "runVsCodeTask",
 				"toolReferenceName": "runTask",
 				"modelDescription": "Runs a VS Code task.\n\n- If you see that an appropriate task exists for building or running code, prefer to use this tool to run the task instead of using the run_in_terminal tool.\n- Make sure that any appropriate build or watch task is running before trying to run tests or execute code.\n- If the user asks to run a task, use this tool to do so.",
@@ -817,7 +818,7 @@
 				}
 			},
 			{
-				"name": "copilot_insertEdit",
+				"name": "copilotx_insertEdit",
 				"toolReferenceName": "insertEdit",
 				"displayName": "%copilot.tools.insertEdit.name%",
 				"modelDescription": "Insert new code into an existing file in the workspace. Use this tool once per file that needs to be modified, even if there are multiple changes for a file. Generate the \"explanation\" property first.\nThe system is very smart and can understand how to apply your edits to the files, you just need to provide minimal hints.\nAvoid repeating existing code, instead use comments to represent regions of unchanged code. Be as concise as possible. For example:\n// ...existing code...\n{ changed code }\n// ...existing code...\n{ changed code }\n// ...existing code...\n\nHere is an example of how you should use format an edit to an existing Person class:\nclass Person {\n\t// ...existing code...\n\tage: number;\n\t// ...existing code...\n\tgetAge() {\n\treturn this.age;\n\t}\n}",
@@ -846,7 +847,7 @@
 				}
 			},
 			{
-				"name": "copilot_createFile",
+				"name": "copilotx_createFile",
 				"toolReferenceName": "createFile",
 				"displayName": "%copilot.tools.createFile.name%",
 				"modelDescription": "This is a tool for creating a new file in the workspace. The file will be created with the specified content. The directory will be created if it does not already exist. Never use this tool to edit a file that already exists.",
@@ -870,7 +871,7 @@
 				}
 			},
 			{
-				"name": "copilot_createDirectory",
+				"name": "copilotx_createDirectory",
 				"toolReferenceName": "createDirectory",
 				"displayName": "%copilot.tools.createDirectory.name%",
 				"modelDescription": "Create a new directory structure in the workspace. Will recursively create all directories in the path, like mkdir -p. You do not need to use this tool before using create_file, that tool will automatically create the needed directories.",
@@ -889,7 +890,7 @@
 				}
 			},
 			{
-				"name": "copilot_openSimpleBrowser",
+				"name": "copilotx_openSimpleBrowser",
 				"displayName": "%copilot.tools.openSimpleBrowser.name%",
 				"modelDescription": "Preview a website or open a URL in the editor's Simple Browser. Useful for quickly viewing locally hosted websites, demos, or resources without leaving the coding environment.",
 				"userDescription": "%copilot.tools.openSimpleBrowser.description%",
@@ -910,7 +911,7 @@
 				}
 			},
 			{
-				"name": "copilot_replaceString",
+				"name": "copilotx_replaceString",
 				"toolReferenceName": "replaceString",
 				"displayName": "%copilot.tools.replaceString.name%",
 				"modelDescription": "This is a tool for making edits in an existing file in the workspace. For moving or renaming files, use run in terminal tool with the 'mv' command instead. For larger edits, split them into smaller edits and call the edit tool multiple times to ensure accuracy. Before editing, always ensure you have the context to understand the file's contents and context. To edit a file, provide: 1) filePath (absolute path), 2) oldString (must exactly match, including whitespace and indentation, uniquely identifying a single occurrence), and 3) newString (replacement text). Each use of this tool replaces exactly ONE occurrence of oldString. CRITICAL REQUIREMENTS: ensure oldString uniquely identifies the change by including at least 3-5 lines of context both before and after the target text, preserving whitespace and indentation exactly. Never use ...existing code... comments in the oldString or newString. Edits must result in valid, idiomatic code and not leave the file broken!",
@@ -939,7 +940,7 @@
 				}
 			},
 			{
-				"name": "copilot_editNotebook",
+				"name": "copilotx_editNotebook",
 				"toolReferenceName": "editNotebook",
 				"displayName": "%copilot.tools.editNotebook.name%",
 				"modelDescription": "This is a tool for editing an existing Notebook file in the workspace. Generate the \"explanation\" property first.\nThe system is very smart and can understand how to apply your edits to the notebooks.\nWhen updating the content of an existing cell, ensure newCode includes at least 3-5 lines of context both before and after the new changes, preserving whitespace and indentation exactly.",
@@ -996,14 +997,14 @@
 				}
 			},
 			{
-				"name": "copilot_runNotebookCell",
+				"name": "copilotx_runNotebookCell",
 				"displayName": "%copilot.tools.runNotebookCell.name%",
 				"toolReferenceName": "runCell",
 				"icon": "$(play)",
 				"modelDescription": "This is a tool for running a code cell in a notebook file directly in the notebook editor. The output from the execution will be returned. Code cells should be run as they are added or edited when working through a problem to bring the kernel state up to date and ensure the code executes successfully. Code cells are ready to run and don't require any pre-processing. If asked to run the first cell in a notebook, you should run the first code cell since markdown cells cannot be executed. NOTE: Avoid executing Markdown cells or providing Markdown cell IDs, as Markdown cells cannot be  executed.",
 				"userDescription": "%copilot.tools.runNotebookCell.description%",
 				"tags": [
-					"enable_other_tool_copilot_getNotebookSummary"
+					"enable_other_tool_copilotx_getNotebookSummary"
 				],
 				"inputSchema": {
 					"type": "object",
@@ -1032,7 +1033,7 @@
 				}
 			},
 			{
-				"name": "copilot_getNotebookSummary",
+				"name": "copilotx_getNotebookSummary",
 				"toolReferenceName": "getNotebookSummary",
 				"displayName": "Get the structure of a notebook",
 				"modelDescription": "This is a tool returns the list of the Notebook cells along with the id, cell types, language, execution information and output mime types for each cell. This is useful to get Cell Ids when executing a notebook or determine what cells have been executed and what order, or what cells have outputs. Requery this tool if the contents of the notebook change.",
@@ -1051,7 +1052,7 @@
 				}
 			},
 			{
-				"name": "copilot_readNotebookCellOutput",
+				"name": "copilotx_readNotebookCellOutput",
 				"displayName": "%copilot.tools.getNotebookCellOutput.name%",
 				"toolReferenceName": "readCellOutput",
 				"canBeReferencedInPrompt": true,
@@ -1079,7 +1080,7 @@
 				}
 			},
 			{
-				"name": "copilot_fetchWebPage",
+				"name": "copilotx_fetchWebPage",
 				"displayName": "%copilot.tools.fetchWebPage.name%",
 				"toolReferenceName": "fetch",
 				"when": "!isWeb",
@@ -1110,7 +1111,7 @@
 				}
 			},
 			{
-				"name": "copilot_findTestFiles",
+				"name": "copilotx_findTestFiles",
 				"displayName": "%copilot.tools.findTestFiles.name%",
 				"icon": "$(beaker)",
 				"canBeReferencedInPrompt": true,
@@ -1134,7 +1135,7 @@
 				}
 			},
 			{
-				"name": "copilot_getDocInfo",
+				"name": "copilotx_getDocInfo",
 				"displayName": "%copilot.tools.getDocInfo.name%",
 				"icon": "$(beaker)",
 				"canBeReferencedInPrompt": false,
@@ -1159,7 +1160,7 @@
 				}
 			},
 			{
-				"name": "copilot_getSearchResults",
+				"name": "copilotx_getSearchResults",
 				"toolReferenceName": "searchResults",
 				"displayName": "%github.copilot.tools.searchResults.name%",
 				"icon": "$(search)",
@@ -1168,7 +1169,7 @@
 				"canBeReferencedInPrompt": true
 			},
 			{
-				"name": "copilot_githubRepo",
+				"name": "copilotx_githubRepo",
 				"toolReferenceName": "githubRepo",
 				"displayName": "%github.copilot.tools.githubRepo.name%",
 				"modelDescription": "Searches a GitHub repository for relevant source code snippets. Only use this tool if the user is very clearly asking for code snippets from a specific GitHub repository. Do not use this tool for Github repos that the user has open in their workspace.",
@@ -2239,18 +2240,18 @@
 						"enumDescriptions": [
 							"Use VS Code's configured display language",
 							"English",
-							"français",
+							"fran\u00e7ais",
 							"italiano",
 							"Deutsch",
-							"español",
-							"русский",
-							"中文(简体)",
-							"中文(繁體)",
-							"日本語",
-							"한국어",
-							"čeština",
-							"português",
-							"Türkçe",
+							"espa\u00f1ol",
+							"\u0440\u0443\u0441\u0441\u043a\u0438\u0439",
+							"\u4e2d\u6587(\u7b80\u4f53)",
+							"\u4e2d\u6587(\u7e41\u9ad4)",
+							"\u65e5\u672c\u8a9e",
+							"\ud55c\uad6d\uc5b4",
+							"\u010de\u0161tina",
+							"portugu\u00eas",
+							"T\u00fcrk\u00e7e",
 							"polski"
 						],
 						"default": "auto",

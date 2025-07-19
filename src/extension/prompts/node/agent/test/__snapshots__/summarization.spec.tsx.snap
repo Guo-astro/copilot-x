@@ -88,7 +88,7 @@ Your summary must include these sections in order, following the exact format be
 - **Technical Depth**: Include enough detail for complex technical decisions and code patterns
 - **Logical Flow**: Present information in a way that builds understanding progressively
 This summary should serve as a comprehensive handoff document that enables seamless continuation of all active work streams while preserving the full technical and contextual richness of the original conversation.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -97,7 +97,7 @@ copilot_cache_control: {"type":"ephemeral"}
 <conversation-summary>
 summarized 2!
 </conversation-summary>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -128,7 +128,7 @@ Focus particularly on:
 - What the agent was actively working on when the token budget was exceeded
 - How these recent operations connect to the overall user goals
 Include all important tool calls and their results as part of the appropriate sections, with special emphasis on the most recent operations.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -221,7 +221,7 @@ Your summary must include these sections in order, following the exact format be
 - **Technical Depth**: Include enough detail for complex technical decisions and code patterns
 - **Logical Flow**: Present information in a way that builds understanding progressively
 This summary should serve as a comprehensive handoff document that enables seamless continuation of all active work streams while preserving the full technical and contextual richness of the original conversation.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -230,7 +230,7 @@ copilot_cache_control: {"type":"ephemeral"}
 <conversation-summary>
 summarized!
 </conversation-summary>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -261,7 +261,7 @@ Focus particularly on:
 - What the agent was actively working on when the token budget was exceeded
 - How these recent operations connect to the overall user goals
 Include all important tool calls and their results as part of the appropriate sections, with special emphasis on the most recent operations.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -354,7 +354,7 @@ Your summary must include these sections in order, following the exact format be
 - **Technical Depth**: Include enough detail for complex technical decisions and code patterns
 - **Logical Flow**: Present information in a way that builds understanding progressively
 This summary should serve as a comprehensive handoff document that enables seamless continuation of all active work streams while preserving the full technical and contextual richness of the original conversation.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -375,7 +375,7 @@ previous turn 1
 ### Assistant
 ~~~md
 response
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -396,7 +396,7 @@ previous turn 2
 ### Assistant
 ~~~md
 response
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -409,7 +409,7 @@ Focus particularly on:
 - What the agent was actively working on when the token budget was exceeded
 - How these recent operations connect to the overall user goals
 Include all important tool calls and their results as part of the appropriate sections, with special emphasis on the most recent operations.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -502,7 +502,7 @@ Your summary must include these sections in order, following the exact format be
 - **Technical Depth**: Include enough detail for complex technical decisions and code patterns
 - **Logical Flow**: Present information in a way that builds understanding progressively
 This summary should serve as a comprehensive handoff document that enables seamless continuation of all active work streams while preserving the full technical and contextual richness of the original conversation.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -529,7 +529,7 @@ line 5
 <userRequest>
 edit this file
 </userRequest>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -578,7 +578,7 @@ Focus particularly on:
 - What the agent was actively working on when the token budget was exceeded
 - How these recent operations connect to the overall user goals
 Include all important tool calls and their results as part of the appropriate sections, with special emphasis on the most recent operations.
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -624,7 +624,7 @@ The class \`Person\` is in \`src/models/person.ts\`.
 </example>
 
 </outputFormatting>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -634,7 +634,7 @@ When generating code, please follow these user provided coding instructions. You
 <instructions>
 This is a test custom instruction file
 </instructions>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -653,7 +653,7 @@ I am working in a workspace that has the following structure:
 \`\`\`
 This is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.
 </workspace_info>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -662,7 +662,7 @@ copilot_cache_control: {"type":"ephemeral"}
 <conversation-summary>
 summarized!
 </conversation-summary>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -735,7 +735,7 @@ I am working in a workspace that has the following structure:
 \`\`\`
 This is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.
 </workspace_info>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -762,7 +762,7 @@ console.log('hi')"
 ~~~md
 🛠️ tooluse_4
 success
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -789,7 +789,7 @@ line 5
 <userRequest>
 edit this file
 </userRequest>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -808,7 +808,7 @@ console.log('hi')"
 ~~~md
 🛠️ tooluse_5
 success
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -881,7 +881,7 @@ I am working in a workspace that has the following structure:
 \`\`\`
 This is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.
 </workspace_info>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -890,7 +890,7 @@ copilot_cache_control: {"type":"ephemeral"}
 <conversation-summary>
 summarized!
 </conversation-summary>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -909,7 +909,7 @@ console.log('hi')"
 ~~~md
 🛠️ tooluse_2
 success
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -928,7 +928,7 @@ console.log('hi')"
 ~~~md
 🛠️ tooluse_3
 success
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -1001,7 +1001,7 @@ I am working in a workspace that has the following structure:
 \`\`\`
 This is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.
 </workspace_info>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -1036,14 +1036,14 @@ response
 <userRequest>
 previous turn 2
 </userRequest>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
 ### Assistant
 ~~~md
 response
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -1070,7 +1070,7 @@ line 5
 <userRequest>
 hello
 </userRequest>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
@@ -1116,7 +1116,7 @@ The class \`Person\` is in \`src/models/person.ts\`.
 </example>
 
 </outputFormatting>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -1144,7 +1144,7 @@ I am working in a workspace that has the following structure:
 \`\`\`
 This is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.
 </workspace_info>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -1153,7 +1153,7 @@ copilot_cache_control: {"type":"ephemeral"}
 <conversation-summary>
 summarized!
 </conversation-summary>
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 
 
@@ -1172,7 +1172,7 @@ console.log('hi')"
 ~~~md
 🛠️ tooluse_3
 success
-copilot_cache_control: {"type":"ephemeral"}
+copilotx_cache_control: {"type":"ephemeral"}
 ~~~
 "
 `;
